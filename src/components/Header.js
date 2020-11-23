@@ -4,9 +4,12 @@ import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Grid, Typography, AppBar, Link } from '@material-ui/core'
 import { LinkContainer } from 'react-router-bootstrap'
+import {useSelector} from 'react-redux'
 
 function Header () {
-    const [count, setCount] = useState(0);
+     const cart = useSelector(state => state.cartReducer)
+
+    const [count, setCount] = useState(1);
     return (
         <AppBar position="static">
             <Grid container spacing={1}>
@@ -19,7 +22,7 @@ function Header () {
                 </Grid>
                 <Grid item md={6}>
                     <IconButton color="inherit">
-                        <Badge badgeContent={useState(count + 1)} color="secondary">
+                        <Badge badgeContent={cart.cart.length} color="secondary">
 
                         <LinkContainer to='/cart'>
                             <ShoppingCartIcon style={{marginTop: 5}}/>

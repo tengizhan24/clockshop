@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
+import {useDispatch} from 'react-redux'
 import { products } from '../products'
 import { Grid, Typography, AppBar, CardMedia, Card, CardActions, CardContent, Container, Button, InputLabel, Select, MenuItem } from '@material-ui/core'
 import { LinkContainer } from 'react-router-bootstrap'
+import {addToCart}  from '../actions/cartActions'
 const ProductScreen = ({ history, location }) => {
     const loc = location.pathname.split('/product/')[1];
     const product = products.find((item) => item.id == loc)
+
+    const dispatch = useDispatch()
+
+    const handleToCartSubmit = () => {
+        dispatch(addToCart(product))
+    }
 
     const [count, setCount] = useState(0);
     return (
@@ -45,13 +53,11 @@ const ProductScreen = ({ history, location }) => {
 
                         
                         <p>Добавлено {count}</p>
-                        <Button onClick={() => setCount(count + 1)} >
+                        <Button onClick={handleToCartSubmit} >
                             В корзину
                             </Button>
                     </Card>
-
                 </Grid>
-
             </Grid>
         </Container>
 
