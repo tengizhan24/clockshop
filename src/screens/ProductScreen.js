@@ -52,7 +52,7 @@ const ProductScreen = ({ history, location }) => {
                         </CardContent>
 
                         
-                        <p>Добавлено {count}</p>
+
                         <Button onClick={handleToCartSubmit} >
                             В корзину
                             </Button>

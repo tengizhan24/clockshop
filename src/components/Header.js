@@ -13,9 +13,9 @@ function Header () {
     return (
         <AppBar position="static">
             <Grid container spacing={1}>
-                <Grid item md={6}>
+                <Grid item md={5}>
                     
-                        <LinkContainer to='/'>
+                        <LinkContainer to='/'  style={{marginLeft:'90px'}} >
                          <h3><Typography>Clock Shop  </Typography></h3>           
                         </LinkContainer>
                   
@@ -25,7 +25,7 @@ function Header () {
                         <Badge badgeContent={cart.cart.length} color="secondary">
 
                         <LinkContainer to='/cart'>
-                            <ShoppingCartIcon style={{marginTop: 5}}/>
+                            <ShoppingCartIcon style={{marginTop:5}}/>
                             </LinkContainer>
                         </Badge>
                     </IconButton>                    
