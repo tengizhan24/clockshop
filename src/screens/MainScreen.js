@@ -87,13 +87,10 @@ const MainScreen = ({ }) => {
                    <LinkContainer  to={`product/${card.id}`}>
                   <Card className={classes.card}>
                     <CardContent className={classes.cardContent}>
-                      <CardMedia image={card.img} style={{ width: 230, height: 200, borderRadius: '10px', transition: '1s',display: 'block' }} />
-                      
+                      <CardMedia image={card.img} style={{ width: 230, height: 200, borderRadius: '10px' }} />
                         <Typography gutterBottom variant="h5" component="h2">
                           {card.Name}
                         </Typography>
-                    
-
                       <Typography component="h3">
                         {card.Text}
                       </Typography>

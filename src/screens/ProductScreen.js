@@ -7,29 +7,28 @@ import {addToCart}  from '../actions/cartActions'
 const ProductScreen = ({ history, location }) => {
     const loc = location.pathname.split('/product/')[1];
     const product = products.find((item) => item.id == loc)
+    const [count, setCount] = useState(0);
 
     const dispatch = useDispatch()
 
     const handleToCartSubmit = () => {
-        dispatch(addToCart(product))
+        dispatch(addToCart(product, count))
+    }   
+   
+   const onChangeCount = (e) => {
+       console.log(e.target.value)
+        setCount(e.target.value)
     }
-
-    const [count, setCount] = useState(0);
     return (
         <Container mt={12}>
             <Grid container>
-
                 <Grid item key={product} xs={3} sm={3} md={8} container>
-
-                    <Card >
+                    <Card>
                         <CardContent>
                             <CardMedia image={product.img} style={{ width: 230, height: 200, borderRadius: '10px' }} />
-
                             <Typography gutterBottom variant="h5" component="h2">
                                 {product.Name}
                             </Typography>
-
-
                             <Typography component="h3">
                                 {product.Text}
                             </Typography>
@@ -38,22 +37,20 @@ const ProductScreen = ({ history, location }) => {
                             <Typography>  Price ${product.Price}</Typography>
                         </CardActions>
                     </Card>
-
                 </Grid>
-
                 <Grid item md={3} spacing={5}>
                     <Card>
                         <CardContent>
                             <InputLabel id="label">Количество</InputLabel>
-                            <Select labelId="label" id="select" value="1">
-                                <MenuItem value="1">1</MenuItem>
-                                <MenuItem value="2">2</MenuItem>
+                            <Select labelId="label" id="select" value={count}  onChange={(e) => onChangeCount(e)}> 
+                                {
+                                    Array.from(Array(11).keys()).map((item) => (
+                                    <MenuItem value={item}>{item}</MenuItem>
+                                    ))
+                                }
                             </Select>
-                        </CardContent>
-
-                        
-
-                        <Button onClick={handleToCartSubmit} >
+                        </CardContent>                       
+                        <Button onClick={handleToCartSubmit} disabled={count === 0 ? true : false} >
                             В корзину
                             </Button>
                     </Card>
@@ -65,4 +62,4 @@ const ProductScreen = ({ history, location }) => {
     )
 }
 
-export default ProductScreen
+export default ProductScreen 

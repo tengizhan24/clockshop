@@ -15,16 +15,16 @@ function Header () {
             <Grid container spacing={1}>
                 <Grid item md={5}>
                     
-                        <LinkContainer to='/'  style={{marginLeft:'90px'}} >
-                         <h3><Typography>Clock Shop  </Typography></h3>           
+                        <LinkContainer to='/'  style={{display:'flex',justifyContent:'center'}} >
+                         <h2><Typography>Clock Shop  </Typography></h2>           
                         </LinkContainer>
                   
                 </Grid>
-                <Grid item md={6}>
+                <Grid item md={7}>
                     <IconButton color="inherit">
                         <Badge badgeContent={cart.cart.length} color="secondary">
 
-                        <LinkContainer to='/cart'>
+                        <LinkContainer to='/cart' style={{display:'flex',justifyContent:'flex-end'}}>
                             <ShoppingCartIcon style={{marginTop:5}}/>
                             </LinkContainer>
                         </Badge>

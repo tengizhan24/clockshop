@@ -3,7 +3,7 @@ import {ADD_TO_CART_FAIL, ADD_TO_CART_SUCCESS, ADD_TO_CART_REQUEST} from '../con
 export const addToCart = (data, quantity) => {
     return {
         type: ADD_TO_CART_SUCCESS,
-        payload: data
+        payload: {...data, quantity}
     }   
 }
 
@@ -13,3 +13,4 @@ export const removeFromCart = (id) => {
         payload: id
     }
 }
+

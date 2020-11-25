@@ -17,6 +17,7 @@ import {
 
 import store from './store'
 import {Provider} from 'react-redux'
+import OrderFrom from './screens/OrderFrom';
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
         <Route path="/" component={MainScreen} exact />
         <Route path="/product/:id" component={ProductScreen} />
         <Route path="/sign" />
-        <Route path="/cart" component={CartScreen}/>       
+        <Route path="/cart" component={CartScreen}/>     
+        <Route path="/order" component={OrderFrom} />  
       </Router>     
        </Provider>
     
