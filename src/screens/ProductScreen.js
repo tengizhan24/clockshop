@@ -22,22 +22,22 @@ const ProductScreen = ({ history, location }) => {
     return (
         <Container mt={12}>
             <Grid container>
-                <Grid item key={product} xs={3} sm={3} md={8} container>
-                    <Card>
+                {/* <Grid item key={product} xs={3} sm={3} md={8} container> */}
+                        <CardMedia image={Array.isArray(product.images) ? product.images[0].img : null} style={{ width: 430, height: 400,marginTop:'50px', borderRadius: '10px' }} />
                         <CardContent>
-                            <CardMedia image={product.img} style={{ width: 230, height: 200, borderRadius: '10px' }} />
-                            <Typography gutterBottom variant="h5" component="h2">
+                        <Grid>
+                            <Typography gutterBottom variant="h5" component="h4" >
                                 {product.Name}
                             </Typography>
                             <Typography component="h3">
                                 {product.Text}
                             </Typography>
-                        </CardContent>
                         <CardActions>
                             <Typography>  Price ${product.Price}</Typography>
                         </CardActions>
-                    </Card>
-                </Grid>
+                        </Grid>
+                        </CardContent>
+                {/* </Grid> */}
                 <Grid item md={3} spacing={5}>
                     <Card>
                         <CardContent>

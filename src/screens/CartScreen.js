@@ -48,36 +48,36 @@ function CartScreen() {
             </Grid>
             <CardContent >
             </CardContent>
-            {cart.cart.map((cardc) => (
+            {cart.cart.map((product) => (
                 
                 <CardContent >
                     <Grid container>
                         <Grid xs={3}>
                             <Typography >
-                                {cardc.Name}
+                                {product.Name}
                             </Typography>
-                            <CardMedia image={cardc.img} style={{ width: 80, height: 80, borderRadius: '50px', marginLeft: '-180px', marginTop: '-50px' }} />
+                            <CardMedia image={Array.isArray(product.images) ? product.images[0].img : null} style={{ width: 80, height: 80, borderRadius: '50px', marginLeft: '-180px', marginTop: '-50px' }} />
                         </Grid>
                         <Grid xs={3}>
                             <Typography >
-                                {cardc.Price}
+                                {product.Price}
                             </Typography>
                         </Grid>
 
                         <Grid xs={3}>
                             <Typography >
-                                {cardc.quantity}
+                                {product.quantity}
                             </Typography>
                         </Grid>
                         <Grid xs={3}>
                             <Typography >
-                                {cardc.Price*cardc.quantity}
+                                {product.Price*product.quantity}
                             </Typography>
                         </Grid>
                     </Grid>
                         <Grid container xs={9} justify="flex-end"  >
                             <Button
-                                onClick={() => handleRemove(cardc.id)}
+                                onClick={() => handleRemove(product.id)}
                                 variant="contained"
                                 color="primary"
                                 endIcon={<DeleteForeverIcon />}
