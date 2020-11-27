@@ -5,6 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import MainScreen from './screens/MainScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
+import DotsMobileStepper from './screens/ProductScreen'
 
 import {
   BrowserRouter as Router,
@@ -18,6 +19,7 @@ import {
 import store from './store'
 import {Provider} from 'react-redux'
 import OrderFrom from './screens/OrderFrom';
+import CheckinScreen from './screens/CheckinScreen';
 
 
 function App() {
@@ -28,7 +30,7 @@ function App() {
         <Header />
         <Route path="/" component={MainScreen} exact />
         <Route path="/product/:id" component={ProductScreen} />
-        <Route path="/sign" />
+        <Route path="/checkin" component={CheckinScreen} />
         <Route path="/cart" component={CartScreen}/>     
         <Route path="/order" component={OrderFrom} />  
       </Router>     

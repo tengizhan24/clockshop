@@ -5,7 +5,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Grid, Typography, AppBar, Link } from '@material-ui/core'
 import { LinkContainer } from 'react-router-bootstrap'
 import {useSelector} from 'react-redux'
-
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 function Header () {
      const cart = useSelector(state => state.cartReducer)
 
@@ -16,7 +16,7 @@ function Header () {
                 <Grid item md={5}>
                     
                         <LinkContainer to='/'  style={{display:'flex',justifyContent:'center'}} >
-                         <h2><Typography>Clock Shop  </Typography></h2>           
+                         <h2><Typography>Clock Shop  </Typography></h2>         
                         </LinkContainer>
                   
                 </Grid>
@@ -29,6 +29,11 @@ function Header () {
                             </LinkContainer>
                         </Badge>
                     </IconButton>                    
+                    <IconButton color="inherit">
+                            <LinkContainer to="/checkin"  style={{display:'flex',justifyContent:'flex-end'}}>
+                            <AccountCircleIcon/>
+                            </LinkContainer>
+                    </IconButton>
                 </Grid>
             </Grid>
         </AppBar>
