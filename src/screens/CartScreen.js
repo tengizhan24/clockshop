@@ -23,7 +23,7 @@ function CartScreen() {
 
     
     return (
-        <Container   >
+        <Container>
             <Grid container >
                 <Grid item xs={3} >
                     <Typography center >
@@ -31,7 +31,7 @@ function CartScreen() {
                     </Typography>
                 </Grid>
                 <Grid xs={3}>
-                    <Typography >
+                    <Typography center>
                         <th>Цена</th>
                     </Typography>
                 </Grid>
@@ -46,17 +46,15 @@ function CartScreen() {
                     </Typography>
                 </Grid>
             </Grid>
-            <CardContent >
-            </CardContent>
+
             {cart.cart.map((product) => (
-                
                 <CardContent >
                     <Grid container>
                         <Grid xs={3}>
                             <Typography >
                                 {product.Name}
                             </Typography>
-                            <CardMedia image={Array.isArray(product.images) ? product.images[0].img : null} style={{ width: 80, height: 80, borderRadius: '50px', marginLeft: '-180px', marginTop: '-50px' }} />
+                            <CardMedia image={Array.isArray(product.images) ? product.images[0].img : null} style={{ width: 80, height: 80, borderRadius: '50px', marginLeft: '-100px', marginTop: '-50px' }} />
                         </Grid>
                         <Grid xs={3}>
                             <Typography >
@@ -72,24 +70,23 @@ function CartScreen() {
                         <Grid xs={3}>
                             <Typography >
                                 {product.Price*product.quantity}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                        <Grid container xs={9} justify="flex-end"  >
                             <Button
+                                style={{marginLeft:'50px'}}
                                 onClick={() => handleRemove(product.id)}
                                 variant="contained"
                                 color="primary"
                                 endIcon={<DeleteForeverIcon />}
-                            >
+                                >
                                 Удалить
                             </Button>
-                        </Grid> 
+                            </Typography>
+                        </Grid>
+                        </Grid>
                 </CardContent>
             ))}
-                <div style={{ marginLeft: '915px', marginTop: '-20px' }}>
                     <LinkContainer to='/order' >
                         <Button
+                            style={{display:'flex', justifyContent:'flex-end'}}
                             variant="contained"
                             color="primary"
                             endIcon={<EcoIcon />}
@@ -97,7 +94,6 @@ function CartScreen() {
                             Оформить заказ
                         </Button>
                     </LinkContainer>
-                </div>
         </Container>
     )
 }

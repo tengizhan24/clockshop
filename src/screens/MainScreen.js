@@ -24,21 +24,39 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     margin: '200px 0'
   },
-  
+  images: {
+    position: 'relative',
+    height: 200,
+    [theme.breakpoints.down('xs')]: {
+      width: '100% !important',
+      height: 100,
+    },
+    '&:hover,product': {
+      zIndex: 5,
+      '& $imageBackdrop': {
+        opacity: 0.15,
+      },
+      '& $imageMarked': {
+        opacity: 0,
+      },
+      '& $imageTitle': {
+        border: '4px solid currentColor',
+      }
+    }}
 }));
 
 
 
 const MainScreen = ({ }) => {
   const classes = useStyles();
-  return (
-   
+  return (   
       <React.Fragment>
         <main>
         <Grid>
-          
         <img src='https://static.s123-cdn-static.com/ready_uploads/media/196364/2000_5cee6d43ad72d.jpg' alt="Text"  style={{width:'100%', height:'700px',backgroundPosition:'left center'}}/>
-        <Button to="/cart" variant="contained" color="primary" style={{marginTop:'-500px',marginLeft:'50%'}} >Закупиться сейчас</Button>
+        <LinkContainer to="/" style={{marginTop:'-500px',marginLeft:'50%'}}>
+        <Button to="/cart" variant="contained" color="primary">Закупиться сейчас</Button>
+        </LinkContainer>
         </Grid>
 
           {/* Hero unit */}
@@ -47,7 +65,6 @@ const MainScreen = ({ }) => {
             <Grid container spacing={4}>
               {products.map((card) => (
                 <Grid item key={card} xs={12} sm={6} md={4}>
-                  
                    <LinkContainer  to={`product/${card.id}`}>
                   <Card className={classes.card}>
                     <CardContent className={classes.cardContent}>
@@ -72,28 +89,23 @@ const MainScreen = ({ }) => {
           
             <div className={classes.footer}>
             <Button 
-                variant="contained"
-                color="primary"
                 borderRadius='50px'>
-                <InstagramIcon/>
+                  <a href="https://www.instagram.com/accounts/login/?hl=ru"> <InstagramIcon/></a>
+                </Button>
+                <Button
+                borderRadius='50px'>
+                  <a href="https://web.whatsapp.com/"><WhatsAppIcon/></a>
                 </Button>
                 <Button 
-                variant="contained"
-                color="primary"
                 borderRadius='50px'>
-                <WhatsAppIcon/>
-                </Button>
-                <Button 
-                variant="contained"
-                color="primary"
-                borderRadius='50px'>
-                <TelegramIcon/>
+                  <a href="https://webhttps://web.telegram.org/#/im?p=u697715340_15334628497560654843.telegram.org"><TelegramIcon/></a>
                 </Button>
             </div>
-           
           </Container>
         </main>
-   
+        <LinkContainer to="/Addto">
+              <Button className="Hello">Добавить товар</Button>
+        </LinkContainer>      
       </React.Fragment>
 
   );

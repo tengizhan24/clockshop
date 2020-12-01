@@ -20,8 +20,8 @@ const ProductScreen = ({ history, location }) => {
         flexGrow: 1,
       },
       img: {
-        marginTop:'-130px',
-        height: 255,
+        marginTop:'10px',
+        height: 250,
         maxWidth: 400,
         overflow: 'hidden',
         display: 'block',
@@ -63,26 +63,46 @@ const ProductScreen = ({ history, location }) => {
     return (
         
         <Container mt={12}>
-            <Grid container>
-                
-                {/* <Grid item key={product} xs={3} sm={3} md={8} container> */}
-                        {/* <CardMedia image={Array.isArray(product.images) ? product.images[0].img : null} style={{ width: 430, height: 400,marginTop:'50px', borderRadius: '10px' }} /> */}
+                            <div className={classes.root}>
                         <CardContent>
                         <Grid>
                             <Typography gutterBottom variant="h5" component="h4" >
                                 {product.Name}
-                            </Typography>
-                            <Typography component="h3">
-                                {product.Text}
                             </Typography>
                         <CardActions>
                             <Typography>  Price ${product.Price}</Typography>
                         </CardActions>
                         </Grid>
                         </CardContent>
-                {/* </Grid> */}
-                <Grid item md={3} spacing={5} style={{marginLeft:'50px',marginTop:'130px'    }}>
-                    <Card>
+                      <Typography component="h3">
+                                                {product.Text}
+                      </Typography>
+                      <img      
+                        className={classes.img}
+                        src={product.images[activeStep] ? product.images[activeStep].img : '' }
+                        alt={product.images[activeStep] ? product.images[activeStep].title: ''}
+                      />
+                      <MobileStepper
+                        steps={maxSteps}
+                        position="static"
+                        variant="text"
+                        activeStep={activeStep}
+                        nextButton={
+                          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+                            Next
+                            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                          </Button>
+                        }
+                        backButton={
+                          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                            Back
+                          </Button>
+                        }
+                      />
+
+            <Grid container>
+                    <Card item md={5} spacing={5} style={{marginLeft:'20px',marginTop:'10px'}}>
                         <CardContent>
                             <InputLabel id="label">Количество</InputLabel>
                             <Select labelId="label" id="select" value={count}  onChange={(e) => onChangeCount(e)}> 
@@ -97,36 +117,8 @@ const ProductScreen = ({ history, location }) => {
                             В корзину
                             </Button>
                     </Card>
-                </Grid>
             </Grid>
-            <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}>
-     
-      </Paper>
-     
-      <img
-        className={classes.img}
-        src={product.images[activeStep] ? product.images[activeStep].img : '' }
-        alt={product.images[activeStep] ? product.images[activeStep].title: ''}
-      />
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        variant="text"
-        activeStep={activeStep}
-        nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-            Next
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-            Back
-          </Button>
-        }
-      />
+
     </div>
         </Container>
 

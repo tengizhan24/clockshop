@@ -8,7 +8,7 @@ import {useSelector} from 'react-redux'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 function Header () {
      const cart = useSelector(state => state.cartReducer)
-
+    
     const [count, setCount] = useState(1);
     return (
         <AppBar position="static">
@@ -17,10 +17,12 @@ function Header () {
                     
                         <LinkContainer to='/'  style={{display:'flex',justifyContent:'center'}} >
                          <h2><Typography>Clock Shop  </Typography></h2>         
-                        </LinkContainer>
-                  
-                </Grid>
-                <Grid item md={7}>
+                        </LinkContainer>                  
+                
+                    </Grid>
+
+
+                <Grid item md={7} style={{display:'flex', justifyContent:'flex-end'}}>
                     <IconButton color="inherit">
                         <Badge badgeContent={cart.cart.length} color="secondary">
 
@@ -28,7 +30,8 @@ function Header () {
                             <ShoppingCartIcon style={{marginTop:5}}/>
                             </LinkContainer>
                         </Badge>
-                    </IconButton>                    
+                    </IconButton>  
+
                     <IconButton color="inherit">
                             <LinkContainer to="/checkin"  style={{display:'flex',justifyContent:'flex-end'}}>
                             <AccountCircleIcon/>

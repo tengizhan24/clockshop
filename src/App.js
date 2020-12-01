@@ -20,6 +20,8 @@ import store from './store'
 import {Provider} from 'react-redux'
 import OrderFrom from './screens/OrderFrom';
 import CheckinScreen from './screens/CheckinScreen';
+import LoginForm from './screens/LoginForm';
+import AddToform from './screens/AddTo/AddToform';
 
 
 function App() {
@@ -32,7 +34,9 @@ function App() {
         <Route path="/product/:id" component={ProductScreen} />
         <Route path="/checkin" component={CheckinScreen} />
         <Route path="/cart" component={CartScreen}/>     
-        <Route path="/order" component={OrderFrom} />  
+        <Route path="/order" component={OrderFrom} />
+        <Route path="/login" component={LoginForm} />
+        <Route path="/Addto" component={AddToform}/>  
       </Router>     
        </Provider>
     
