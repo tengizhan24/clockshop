@@ -52,17 +52,17 @@ const MainScreen = ({ }) => {
   return (   
       <React.Fragment>
         <main>
-        <Grid>
+        {/* <Grid>
         <img src='https://static.s123-cdn-static.com/ready_uploads/media/196364/2000_5cee6d43ad72d.jpg' alt="Text"  style={{width:'100%', height:'700px',backgroundPosition:'left center'}}/>
-        <LinkContainer to="/" style={{marginTop:'-500px',marginLeft:'50%'}}>
+        <LinkContainer to="/" style={{marginTop:'00px',marginLeft:'50%'}}>
         <Button to="/cart" variant="contained" color="primary">Закупиться сейчас</Button>
         </LinkContainer>
-        </Grid>
+        </Grid> */}
 
           {/* Hero unit */}
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
-            <Grid container spacing={4}>
+            <Grid container spacing={4} style={{marginTop:"20px"}}>
               {products.map((card) => (
                 <Grid item key={card} xs={12} sm={6} md={4}>
                    <LinkContainer  to={`product/${card.id}`}>
@@ -90,7 +90,7 @@ const MainScreen = ({ }) => {
             <div className={classes.footer}>
             <Button 
                 borderRadius='50px'>
-                  <a href="https://www.instagram.com/accounts/login/?hl=ru"> <InstagramIcon/></a>
+                  <a href="https://www.instagram.com/accounts/login/?hl=ru"><InstagramIcon/></a>
                 </Button>
                 <Button
                 borderRadius='50px'>

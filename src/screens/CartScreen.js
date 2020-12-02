@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardMedia, Typography, Container, Grid } from '@material-ui/core'
+import { Button, Card, CardContent, CardMedia, Typography, Container, Grid, Select, MenuItem } from '@material-ui/core'
 
 import React, { useState } from 'react';
 import { LinkContainer } from 'react-router-bootstrap'
@@ -6,9 +6,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { removeFromCart } from '../actions/cartActions'
 import EcoIcon from '@material-ui/icons/Eco';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { products } from '../products'
-import { cartReducer } from '../reducers/cartReducer';
-import SendIcon from '@material-ui/icons/Send';
 
 function CartScreen() {
 
@@ -20,8 +17,13 @@ function CartScreen() {
     const handleRemove = (id) => {
         dispatch(removeFromCart(id))
     }
-
     
+    const [count, setCount] = useState(0);
+
+    const onChangeCount = (e) => {
+        setCount(e.target.value)
+    }
+
     return (
         <Container>
             <Grid container >
@@ -64,7 +66,16 @@ function CartScreen() {
 
                         <Grid xs={3}>
                             <Typography >
+                            {/* <Select labelId="label" id="select" value={count}  onChange={(e) => onChangeCount(product.quantity)}> 
+                                {
+                                    Array.from(Array(11).keys()).map((item) => (
+                                        <MenuItem value={item}>{item}</MenuItem>
+                                        ))
+                                    }
+                            </Select> */}
+                                {/* <Button onClick={product.quantity-1}>-</Button>
                                 {product.quantity}
+                                <Button onClick={}>+</Button> */}
                             </Typography>
                         </Grid>
                         <Grid xs={3}>
@@ -80,6 +91,7 @@ function CartScreen() {
                                 Удалить
                             </Button>
                             </Typography>
+                            
                         </Grid>
                         </Grid>
                 </CardContent>

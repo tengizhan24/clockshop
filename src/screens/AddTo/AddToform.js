@@ -64,7 +64,7 @@ export default function AddToform() {
                 required
                 fullWidth
                 name="password"
-                label="Сумма тавару"
+                label="Сумма тавара"
                 id="prise"
               />
             </Grid>
