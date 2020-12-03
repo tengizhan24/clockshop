@@ -1,11 +1,15 @@
-import {ADD_TO_CART_FAIL, ADD_TO_CART_SUCCESS, ADD_TO_CART_REQUEST} from '../constants/cartConstants'
+import {ADD_TO_CART_SUCCESS} from '../constants/cartConstants'
 
-export const cartReducer = (state = {cart: []}, action) => {    
-    switch (action.type) {
+const initialProducts = JSON.parse(localStorage.getItem('productTest'))
+
+
+export const cartReducer = (state = {cart: [...[], initialProducts]}, action) => {    
+    // console.log(initialProducts)
+    switch (action.type){
         case ADD_TO_CART_SUCCESS :            
             return {
                 ...state,
-                cart:  [...state.cart.filter((item) => item.id != action.payload.id), action.payload]
+                cart:  [...state.cart.filter((item) => item.id !== action.payload.id), action.payload]
             }
             
         case 'REMOVE_ITEM_FROM_CART':

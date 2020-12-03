@@ -1,27 +1,29 @@
-import { Button, Card, CardContent, CardMedia, Typography, Container, Grid, Select, MenuItem } from '@material-ui/core'
+import { Button, CardContent, CardMedia, Typography, Container, Grid, Select, MenuItem } from '@material-ui/core'
 
-import React, { useState } from 'react';
+import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
-import { removeFromCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 import EcoIcon from '@material-ui/icons/Eco';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { products } from '../products';
 
 function CartScreen() {
-
+    
     const cart = useSelector(state => state.cartReducer)
     const dispatch = useDispatch(0)
-
+    
     console.log(cart.cart)
-
+    
     const handleRemove = (id) => {
         dispatch(removeFromCart(id))
     }
     
-    const [count, setCount] = useState(0);
-
-    const onChangeCount = (e) => {
-        setCount(e.target.value)
+    
+    const onChangeCount = (e, product) => {   
+        console.log(product)
+        dispatch(addToCart(product, e.target.value))
+        localStorage.setItem('productTest', JSON.stringify(product));
     }
 
     return (
@@ -66,16 +68,13 @@ function CartScreen() {
 
                         <Grid xs={3}>
                             <Typography >
-                            {/* <Select labelId="label" id="select" value={count}  onChange={(e) => onChangeCount(product.quantity)}> 
+                            <Select labelId="label" id="select" value={product.quantity} onChange={(e) => onChangeCount(e, product)}> 
                                 {
                                     Array.from(Array(11).keys()).map((item) => (
                                         <MenuItem value={item}>{item}</MenuItem>
                                         ))
                                     }
-                            </Select> */}
-                                {/* <Button onClick={product.quantity-1}>-</Button>
-                                {product.quantity}
-                                <Button onClick={}>+</Button> */}
+                            </Select>
                             </Typography>
                         </Grid>
                         <Grid xs={3}>

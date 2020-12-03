@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux'
 import { products } from '../products'
-import { Grid, Typography, AppBar, CardMedia, Card, CardActions, CardContent, Container, Button, InputLabel, Select, MenuItem, Paper } from '@material-ui/core'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Grid, Typography, Card, CardActions, CardContent, Container, Button, InputLabel, Select, MenuItem } from '@material-ui/core'
 import {addToCart}  from '../actions/cartActions'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import SwipeableViews from 'react-swipeable-views';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
-const ProductScreen = ({ history, location }) => {
+const ProductScreen = ({ location }) => {
     const loc = location.pathname.split('/product/')[1];
     const product = products.find((item) => item.id == loc)
  const useStyles = makeStyles({
@@ -51,14 +49,10 @@ const ProductScreen = ({ history, location }) => {
         dispatch(addToCart(product, count))
     }   
     
-    const onChangeCount = (e) => {
-        console.log(e.target.value)
+    const onChangeCoun = (e) => {
+        // console.log(e.target.value)
         setCount(e.target.value)
     }
-    const handleStepChange = (step) => {
-        setActiveStep(step);
-    };
-
 
     return (
         
@@ -105,10 +99,10 @@ const ProductScreen = ({ history, location }) => {
                     <Card item md={5} spacing={5} style={{marginLeft:'20px',marginTop:'10px'}}>
                         <CardContent>
                             <InputLabel id="label">Количество</InputLabel>
-                            <Select labelId="label" id="select" value={count}  onChange={(e) => onChangeCount(e)}> 
+                            <Select labelId="label" id="select" value={count}  onChange={(e) => onChangeCoun(e)}> 
                                 {
-                                    Array.from(Array(11).keys()).map((item) => (
-                                        <MenuItem value={item}>{item}</MenuItem>
+                                    Array.from(Array(11).keys()).map((item, index) => (
+                                        <MenuItem value={item} key={index}>{item}</MenuItem>
                                         ))
                                     }
                             </Select>

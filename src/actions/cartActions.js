@@ -1,4 +1,4 @@
-import {ADD_TO_CART_FAIL, ADD_TO_CART_SUCCESS, ADD_TO_CART_REQUEST} from '../constants/cartConstants'
+import {ADD_TO_CART_SUCCESS} from '../constants/cartConstants'
 
 export const addToCart = (data, quantity) => {
     return {
